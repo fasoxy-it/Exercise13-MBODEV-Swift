@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-let people = Model().people
-
-
 struct ContentView: View {
     
+    @State private var people = Model().people
     @State private var showFavorites = false
     
     var filteredList: [Person] {
@@ -24,6 +22,13 @@ struct ContentView: View {
         VStack {
             Toggle(isOn: $showFavorites) {
                 Text("Favorites")
+            }
+            Button(action: {
+                guard (!people.isEmpty) else {return}
+                people.removeFirst()
+                print(people.count)
+            }) {
+                Text("Remove first")
             }
             List(filteredList) {
                 PersonRow(person: $0)
