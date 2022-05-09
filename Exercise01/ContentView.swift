@@ -8,14 +8,13 @@
 import SwiftUI
 
 let people = Model().people
+var favorites: Bool = false
 
 struct ContentView: View {
     var body: some View {
-        List(people) { person in
-            if person.favorite == true {
-                PersonRow(person: person)
-            }
-        }
+        List(people.filter {$0.favorite}) {
+            PersonRow(person: $0)
+        } 
     }
 }
 
