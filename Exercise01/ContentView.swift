@@ -7,10 +7,13 @@
 
 import SwiftUI
 
+let people = Model().people
+
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        List(people) { person in
+            PersonRow(person: person)
+        }
     }
 }
 
