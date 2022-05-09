@@ -13,6 +13,9 @@ struct PersonRow: View {
         HStack {
             Text(person.name).bold()
             Text(person.surname)
+            if person.favorite == true {
+                Image(systemName: "star.fill")
+            }
         }
     }
 }
