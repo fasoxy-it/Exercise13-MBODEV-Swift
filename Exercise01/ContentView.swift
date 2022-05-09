@@ -8,13 +8,27 @@
 import SwiftUI
 
 let people = Model().people
-var favorites: Bool = false
+
 
 struct ContentView: View {
+    
+    @State private var showFavorites = false
+    
+    var filteredList: [Person] {
+        people.filter {
+            !showFavorites || $0.favorite
+        }
+    }
+    
     var body: some View {
-        List(people.filter {$0.favorite}) {
-            PersonRow(person: $0)
-        } 
+        VStack {
+            Toggle(isOn: $showFavorites) {
+                Text("Favorites")
+            }
+            List(filteredList) {
+                PersonRow(person: $0)
+            }
+        }
     }
 }
 
