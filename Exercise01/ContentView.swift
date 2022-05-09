@@ -12,7 +12,9 @@ let people = Model().people
 struct ContentView: View {
     var body: some View {
         List(people) { person in
-            PersonRow(person: person)
+            if person.favorite == true {
+                PersonRow(person: person)
+            }
         }
     }
 }

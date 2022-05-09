@@ -14,7 +14,9 @@ struct PersonRow: View {
             Text(person.name).bold()
             Text(person.surname)
             if person.favorite == true {
+                Spacer()
                 Image(systemName: "star.fill")
+                    .foregroundColor(.yellow)
             }
         }
     }
